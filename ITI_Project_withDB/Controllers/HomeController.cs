@@ -28,5 +28,20 @@ namespace ITI_Project_withDB.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult TestModel()
+        {
+            Student student = new Student()
+            {
+                Name = "Test",
+                Address = "cairo"
+            };
+            Instructor instructor = new Instructor()
+            {
+                Name = "ali",
+                Salary = 1000
+            };
+            return View(student);
+        }
     }
 }

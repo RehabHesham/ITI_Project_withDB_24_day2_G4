@@ -13,5 +13,11 @@
 
         // Navigation Property
         public List<StudentCourse>? studentCourses { get; set; }
+
+
+        public override string ToString()
+        {
+            return $"name: {Name}, address: {Address}";
+        }
     }
 }
