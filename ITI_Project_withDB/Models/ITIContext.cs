@@ -15,5 +15,6 @@ namespace ITI_Project_withDB.Models
         public DbSet<Instructor> Instructors { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<StudentCourse> StudentCourses { get; set; }
+        public DbSet<Department> Departments { get; set; }
     }
 }

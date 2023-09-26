@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Index";
     int index = 1;
+    Layout = "_Layout";
 }
 
 <h1>Index</h1>
@@ -23,7 +24,7 @@
             <td>@(index++)</td>
             <td>@std.Name</td>
             <td>@std.Email</td>
-            <td><img src="/images/@std.Img" alt="student image" /></td>
+            <td><img src="/images/@std.Img" alt="student image" width="100px"/></td>
             <td> 
                 <a href="/Student/Details/@std.Id">Details</a> |
             </td>
