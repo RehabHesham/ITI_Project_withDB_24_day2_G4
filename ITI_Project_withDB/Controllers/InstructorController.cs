@@ -37,7 +37,7 @@ namespace ITI_Project_withDB.Controllers
         {
             context.Instructors.Add(instructor);
             context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Login", "Account");
         }
 
         [HttpGet]

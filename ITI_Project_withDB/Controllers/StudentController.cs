@@ -42,7 +42,7 @@ namespace ITI_Project_withDB.Controllers
             context.Students.Add(student);
             context.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Login","Account");
         }
     }
 }

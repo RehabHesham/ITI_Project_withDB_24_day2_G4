@@ -29,11 +29,31 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/home/index">Home</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/course/index">Courses</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/student/index">Students</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/instructor/index">Instructors</a></li>
+                    @if(Context.Session.GetString("Type") == nameof(Student))
+                    {
+
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" asp-controller="@nameof(StudentCourse)" asp-action="GetStudentCourses">Courses</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/student/Details/@Context.Session.GetInt32("Id")">Student Profile</a></li>
+                    }else if(Context.Session.GetString("Type") == nameof(Instructor))
+                    {
+
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/course/index">Courses</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/student/index">Students</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" asp-controller="@nameof(StudentCourse)" asp-action="Index">Students Course</a></li>
+                    }
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/TransferData/index">Transfer Data</a></li>
                 </ul>
+                <ul class="navbar-nav ms-auto">
+                    @if(Context.Session.GetInt32("Id")==null){
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" asp-controller="Account" asp-action="Register">Registration</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" asp-controller="Account" asp-action="Login">Login</a></li>
+                    }
+                    else{
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" >Welcome, @Context.Session.GetString("Name")</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" asp-controller="Account" asp-action="Logout">Logout</a></li>
+                        
+                        }
+                    </ul>
             </div>
         </div>
     </nav>
